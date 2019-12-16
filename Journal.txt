@@ -1,1 +1,4 @@
 This project has the objective of playing with Computer Vision by tracking a red object and tweaking the parameters.
+
+TODO:
+-How to make it smart
