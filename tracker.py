@@ -1,3 +1,4 @@
+import libs.ColorTrackBar.ColorTrackBar as ColorTrackBar
 import numpy as np
 import cv2
 
@@ -10,6 +11,15 @@ fourcc = cv2.VideoWriter_fourcc(*'DIVX')
 # False the last one if it's going to be on gray scale.
 # The size of the window must be correct otherwise, trouble.
 out = cv2.VideoWriter('output.avi',fourcc, 20.0, (640*2,480*2))
+
+# Take a picture and modify the filter values.
+ret, frame = cap.read()
+window = ColorTrackBar.HSVFilter(frame)
+
+
+values = window.show()
+print(values)
+
 
 while(cap.isOpened()):
     ret, frame = cap.read()
