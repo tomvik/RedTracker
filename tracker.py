@@ -14,12 +14,17 @@ out = cv2.VideoWriter('output.avi',fourcc, 20.0, (640*2,480*2))
 
 # Take a picture and modify the filter values.
 ret, frame = cap.read()
-window = ColorTrackBar.HSVFilter(frame)
-
-
-values = window.show()
-print(values)
-
+window = ColorTrackBar.HSVTrackBar(frame)
+lower_values = window.showAndGetValues()
+print(lower_values)
+positions = [lower_values['H'], lower_values['S'], lower_values['V']]
+lower_bound_red = np.array([[lower_values['H'][0], lower_values['S'][0], lower_values['V'][0]],
+                           [lower_values['H'][1], lower_values['S'][1], lower_values['V'][1]]])
+window = ColorTrackBar.HSVTrackBar(frame, positions)
+upper_values = window.showAndGetValues()
+print(upper_values)
+upper_bound_red = np.array([[upper_values['H'][0], upper_values['S'][0], upper_values['V'][0]],
+                           [upper_values['H'][1], upper_values['S'][1], upper_values['V'][1]]])
 
 while(cap.isOpened()):
     ret, frame = cap.read()
@@ -36,10 +41,6 @@ while(cap.isOpened()):
 
         # Convert to HSV scale, since with the H one we can get a better red filter.
         hsv_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
-
-        # Red filters
-        lower_bound_red = np.array([[0, 120, 70], [10, 255, 255]])
-        upper_bound_red = np.array([[170, 120, 70], [180, 255, 255]])
 
         mask_1 = cv2.inRange(hsv_frame, lower_bound_red[0], lower_bound_red[1])
         mask_2 = cv2.inRange(hsv_frame, upper_bound_red[0], upper_bound_red[1])

@@ -1,7 +1,7 @@
 import ColorTrackBar
 import cv2
 
-choice = {"bgr": ColorTrackBar.HSVFilter}
+choice = {"bgr": ColorTrackBar.HSVTrackBar}
 
 if __name__ == "__main__":
     cap = cv2.VideoCapture(0)
@@ -10,5 +10,5 @@ if __name__ == "__main__":
     
     window = choice["bgr"](img)
 
-    window.show()
+    window.showAndGetValues()
     cv2.destroyAllWindows()
