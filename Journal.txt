@@ -1,9 +1,9 @@
 This project has the objective of playing with Computer Vision by tracking a red object and tweaking the parameters.
 
 TODO:
--Get values of the Trackbar.
--Use values as input of the filter
--Make a little bit better the Trackbar
--See how to track a red object/color selected
+-Clean code
+-Maybe use live trackbar
+-Maybe more than one object tracking
+-Understand better the code
 -Learn how to use __init__.py
 -How to make it smart
