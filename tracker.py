@@ -41,6 +41,15 @@ while(cap.isOpened()):
     if ret==True:
         # Get a copy for the frame where the circle will be drawn.
         circle_frame = frame.copy()
+        # Averaging.
+        kernel = np.ones((5,5),np.float32)/25
+        frame = cv2.filter2D(frame,-1,kernel)
+        # Gaussian Blur.
+        frame = cv2.GaussianBlur(frame,(5,5),0)
+        # Median Blur.
+        frame = cv2.medianBlur(frame,5)
+        # Bilateral Blur.
+        frame = cv2.bilateralFilter(frame,9,75,75)
 
         # Convert to HSV scale, since with the H one we can get a better red filter.
         hsv_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)

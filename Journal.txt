@@ -1,9 +1,6 @@
 This project has the objective of playing with Computer Vision by tracking a red object and tweaking the parameters.
 
+Probably I won't continue this anymore because I already reached the original objective.
+
 TODO:
--Clean code
--Maybe use live trackbar
--Maybe more than one object tracking
--Understand better the code
--Learn how to use __init__.py
--How to make it smart
+- TrackBars for blurring filters.
